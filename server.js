@@ -14,23 +14,25 @@ app.set("views", path.join(__dirname, "views"));
 app.get("/", async (req, res) => {
   const response = await fetch("https://animeflv.ahmedrangel.com/api/list/animes-on-air");
   const result = await response.json();
-  const animes = result.data; // ⚡ array de animes
+  const animes = result.data; // array de animes
   res.render("index", { animes });
 });
 
 // Página de anime → lista de capítulos
-app.get("/anime/:id", async (req, res) => {
-  const { id } = req.params;
-  const response = await fetch(`https://animeflv.ahmedrangel.com/api/anime/${id}`);
+app.get("/anime/:slug", async (req, res) => {
+  const { slug } = req.params; // esto viene de la URL
+  const response = await fetch(`https://animeflv.ahmedrangel.com/api/anime/${slug}`);
   const result = await response.json();
   const anime = result.data;
-  res.render("anime", { anime });
+  
+  res.render("anime", { anime, slug }); // ✅ pasamos slug explícitamente
 });
 
 // Página de episodio → fuentes
-app.get("/anime/:id/episode/:ep", async (req, res) => {
-  const { id, ep } = req.params;
-  const response = await fetch(`https://animeflv.ahmedrangel.com/api/anime/${id}/${ep}`);
+app.get("/anime/:slug/episode/:number", async (req, res) => {
+  const { slug, number } = req.params;
+  const episodeSlug = `${slug}-${number}`; // concatena slug + número
+  const response = await fetch(`https://animeflv.ahmedrangel.com/api/anime/episode/${episodeSlug}`);
   const result = await response.json();
   const episode = result.data;
   res.render("episode", { episode });

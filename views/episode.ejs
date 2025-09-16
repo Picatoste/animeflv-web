@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title><%= episode.title %></title>
+  <meta charset="UTF-8">
+  <title><%= episode.title %> - Episodio <%= episode.number %></title>
 </head>
 <body>
-  <h1><%= episode.title %></h1>
-  <h2>Fuentes</h2>
+  <h1><%= episode.title %> - Episodio <%= episode.number %></h1>
+
+  <h2>Servidores disponibles</h2>
   <ul>
-    <% episode.sources.forEach(src => { %>
+    <% episode.servers.forEach(server => { %>
       <li>
-        <a href="<%= src.url %>" target="_blank">
-          Ver en <%= src.server %>
+        <a href="<%= server.embed %>" target="_blank" rel="noopener noreferrer">
+          <%= server.name %>
         </a>
       </li>
     <% }) %>
   </ul>
-  <a href="/anime/<%= episode.animeId %>">⬅ Volver</a>
 </body>
 </html>

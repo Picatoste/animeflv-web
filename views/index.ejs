@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
   <title>Animes en emisión</title>
 </head>
 <body>
-  <h1>Animes en emisión</h1>
+  <h1>Lista de Animes en emisión</h1>
   <ul>
     <% animes.forEach(anime => { %>
       <li>
-        <a href="/anime/<%= anime.id %>"><%= anime.title %></a>
+        <a href="/anime/<%= anime.slug %>"><%= anime.title %></a> (<%= anime.type %>)
       </li>
     <% }) %>
   </ul>

@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
   <title><%= anime.title %></title>
 </head>
 <body>
   <h1><%= anime.title %></h1>
-  <p><%= anime.synopsis %></p>
+  <p><strong>Tipo:</strong> <%= anime.type %></p>
+  <p><strong>Estado:</strong> <%= anime.status %></p>
+  <p><strong>Rating:</strong> <%= anime.rating %></p>
+  <p><strong>Géneros:</strong> <%= anime.genres.join(', ') %></p>
+  <p><strong>Sinopsis:</strong> <%= anime.synopsis %></p>
+  <img src="<%= anime.cover %>" alt="<%= anime.title %>">
+
   <h2>Episodios</h2>
   <ul>
     <% anime.episodes.forEach(ep => { %>
       <li>
-        <a href="/anime/<%= anime.id %>/episode/<%= ep.number %>">
+        <a href="/anime/<%= slug %>/episode/<%= ep.number %>">
           Episodio <%= ep.number %>
         </a>
       </li>
     <% }) %>
   </ul>
-  <a href="/">⬅ Volver</a>
 </body>
 </html>
