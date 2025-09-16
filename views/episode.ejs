@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= episode.title %></title>
+</head>
+<body>
+  <h1><%= episode.title %></h1>
+  <h2>Fuentes</h2>
+  <ul>
+    <% episode.sources.forEach(src => { %>
+      <li>
+        <a href="<%= src.url %>" target="_blank">
+          Ver en <%= src.server %>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/anime/<%= episode.animeId %>">⬅ Volver</a>
+</body>
+</html>

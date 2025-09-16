@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= anime.title %></title>
+</head>
+<body>
+  <h1><%= anime.title %></h1>
+  <p><%= anime.synopsis %></p>
+  <h2>Episodios</h2>
+  <ul>
+    <% anime.episodes.forEach(ep => { %>
+      <li>
+        <a href="/anime/<%= anime.id %>/episode/<%= ep.number %>">
+          Episodio <%= ep.number %>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">⬅ Volver</a>
+</body>
+</html>
